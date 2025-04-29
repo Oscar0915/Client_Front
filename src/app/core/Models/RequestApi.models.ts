@@ -23,3 +23,14 @@ export class RequestApiData {
     this.endDate = new Date(endDate);
   }
 }
+
+
+export class RequestApiSearchModel {
+  token: string;
+  data: string;
+
+  constructor(token: string, data: string) {
+    this.token = token;
+    this.data = data;
+  }
+}

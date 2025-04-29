@@ -38,7 +38,7 @@ export class ClientDataTableComponent implements OnInit {
     });
   }
 
-  private GetClients(): void {
+  public GetClients(): void {
     this.isLoading = false;
     this._ClientsApiServiceService.GetClients().subscribe(
       (response: ResponseAllClientModel) => {

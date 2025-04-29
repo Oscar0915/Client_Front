@@ -10,13 +10,19 @@ import { RegisterClientComponent } from '../../Components/register-client/regist
 import { MatDialog } from '@angular/material/dialog';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { ClientsApiService } from '../../core/Services/ApiService/clients-api-service.service';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RequestApiSearchModel } from '../../core/Models/RequestApi.models';
 import { ResponseApiModel } from '../../core/Models/ResponseApi.models';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { StatusDataClientService } from '../../core/Services/StatusClientData/status-data-client.service';
+import { ClientDataModel } from '../../core/Models/ResponseAllClient.models';
 
 
 @Component({
   selector: 'app-client-magnament',
   standalone: true,
-  imports: [MatSidenavModule, SideNavComponent, MatIconModule, MatButtonModule, MatFormFieldModule, MatInputModule, ClientDataTableComponent],
+  imports: [MatSidenavModule, SideNavComponent, MatIconModule, MatButtonModule, MatFormFieldModule, 
+    MatInputModule, ClientDataTableComponent, ReactiveFormsModule],
   templateUrl: './client-magnament.component.html',
   styleUrl: './client-magnament.component.scss'
 })
@@ -27,9 +33,18 @@ export class ClientMagnamentComponent implements OnInit{
   drawerOpened = true;
   isSmallScreen = false;
 
+  searchForm!: FormGroup;
+
+
   constructor(private dialog: MatDialog, private breakpointObserver: BreakpointObserver, private cdr: ChangeDetectorRef,
-    private _ClientApiService:ClientsApiService
-  ) {}
+    private _ClientApiService:ClientsApiService, private fb: FormBuilder, private snackBar: MatSnackBar,
+        private _StatusDataClientService: StatusDataClientService
+  ) {
+
+    this.searchForm = this.fb.group({
+      parameter: ['', Validators.required]
+    });
+  }
 
   
   ngOnInit(): void {
@@ -83,6 +98,40 @@ export class ClientMagnamentComponent implements OnInit{
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
+  }
+
+  onSearch(): void {
+    if(!this.searchForm.valid) return;
+
+    const key = this.searchForm.get('parameter')?.value;
+    let Request:RequestApiSearchModel = new RequestApiSearchModel("", key);
+    
+    this.openSnackBar("Consultando Cliente", "Cerrar");
+
+    let Clients:ClientDataModel[] = [];
+    this._ClientApiService.GetClientFind(Request).subscribe(
+      (Response:ResponseApiModel) =>{
+        if(Response.status == "success"){
+          Clients.push(Response.data);
+          this._StatusDataClientService.findClient(Clients);
+          this.openSnackBar(Response.successMessage, "Cerrar");
+        }else{
+          this.openSnackBar(Response.errorMessage, "Cerrar");
+        }
+        this.searchForm.reset();
+      },
+      (Error) => {
+        this.openSnackBar(Error.message, "Cerrar");
+      });
+
+  }
+
+  private openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, 'Cerrar', {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+    });
   }
   
 }

@@ -3,7 +3,7 @@ import { environment } from '../../../../environments/environment';
 import { Observable } from 'rxjs';
 import { ResponseAllClientModel } from '../../Models/ResponseAllClient.models';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { RequestApiModel } from '../../Models/RequestApi.models';
+import { RequestApiModel, RequestApiSearchModel } from '../../Models/RequestApi.models';
 import { ResponseApiExporModel, ResponseApiModel } from '../../Models/ResponseApi.models';
 
 @Injectable({
@@ -38,6 +38,13 @@ export class ClientsApiService {
 
   public ExportData(): Observable<ResponseApiExporModel> {
     return this._httpClient.get<ResponseApiExporModel>(`${this.clientApiUrl}/export`,  {
+      headers: this.headers
+    });
+  }
+
+  
+  public GetClientFind(Request: RequestApiSearchModel): Observable<ResponseApiModel> {
+    return this._httpClient.post<ResponseApiModel>(`${this.clientApiUrl}/find`, Request, {
       headers: this.headers
     });
   }

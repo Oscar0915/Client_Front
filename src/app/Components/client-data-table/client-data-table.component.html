@@ -1,5 +1,9 @@
 <h2 class="section-title">Clients</h2>
 
+<button mat-icon-button color="accent" title="Refresh" (click)="GetClients()">
+    <mat-icon>update</mat-icon> 
+</button>
+
 <div class="table-container">
 
     @if (!isLoading) {

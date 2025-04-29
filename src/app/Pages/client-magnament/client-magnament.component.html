@@ -25,13 +25,16 @@
           
             </div>
             
-            <mat-form-field appearance="outline" class="search-field">
-              <mat-label>Enter shared key </mat-label>
-              <input matInput /> 
-              <button mat-button matSuffix color="primary">|Search</button>
-            </mat-form-field>
+            <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+              <mat-form-field appearance="outline" class="search-field">
+                <mat-label>Enter shared key</mat-label>
+                <input matInput formControlName="parameter" />
+                <button mat-button matSuffix color="primary" type="submit" [disabled]="searchForm.invalid"><mat-icon>search</mat-icon>|Search</button>
+              </mat-form-field>
+              <button mat-flat-button color="primary">Advanced Search</button>
+            </form>
             
-            <button mat-flat-button color="primary">Advanced Search</button>
+            
 
             <div class="tableClient">
               <app-client-data-table></app-client-data-table>

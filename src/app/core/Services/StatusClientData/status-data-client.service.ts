@@ -36,4 +36,9 @@ export class StatusDataClientService {
     );
     this.clientsSubject.next(current);
   }
+
+  findClient(clients: ClientDataModel[]): void { 
+    this.clientsSubject.next([]);  
+    this.clientsSubject.next(clients);
+  }
 }
