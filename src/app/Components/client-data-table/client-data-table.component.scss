@@ -1,0 +1,32 @@
+.section-title {
+    margin-top: 50px;
+    color: #0072c6;
+    margin-bottom: 16px;
+    font-weight: bold;
+}
+
+table {
+    margin-top: 20px;
+    background-color: #dbd5d5;
+    table-layout: fixed;
+    /* Fija el ancho de la tabla */
+    border: 1px solid #020202;
+}
+
+
+.table-container {
+    overflow: auto;
+    margin-bottom: 100px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Mantiene el ancho de las celdas y evita que se rompa el contenido */
+mat-cell,
+mat-header-cell {
+    white-space: nowrap;
+    /* Evita saltos de línea en celdas */
+    min-width: 150px;
+    /* Ajusta el tamaño mínimo de las celdas */
+}
+

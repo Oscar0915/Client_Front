@@ -1,1 +1,68 @@
-<p>client-data-table works!</p>
+<h2 class="section-title">Clients</h2>
+
+<div class="table-container">
+
+    @if (!isLoading) {
+        <br>
+        <mat-spinner diameter="50"></mat-spinner>
+        <p>Loading clients...</p>
+    }
+
+    @if (dataSource.data.length == 0 && isLoading) {
+        <hr>
+        <p>There are no registered customers in our database.</p>
+    }
+
+    @if(dataSource.data.length > 0 && isLoading){
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z1 custom-table">
+
+        <!-- Shared Key -->
+        <ng-container matColumnDef="sharedKey">
+            <th mat-header-cell *matHeaderCellDef> Shared Key </th>
+            <td mat-cell *matCellDef="let element"> {{element.sharedKey}} </td>
+        </ng-container>
+
+        <!-- Business ID -->
+        <ng-container matColumnDef="businessId">
+            <th mat-header-cell *matHeaderCellDef> Business ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.businessId}} </td>
+        </ng-container>
+
+        <!-- Email -->
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> E-mail </th>
+            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+
+        <!-- Phone -->
+        <ng-container matColumnDef="phone">
+            <th mat-header-cell *matHeaderCellDef> Phone </th>
+            <td mat-cell *matCellDef="let element"> {{element.phoneNumber}} </td>
+        </ng-container>
+
+        <!-- Date Added -->
+        <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef> Data Added </th>
+            <td mat-cell *matCellDef="let element"> {{element.startDate}} </td>
+        </ng-container>
+
+        <!-- Edit -->
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>
+                <button mat-icon-button color="accent">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button>
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    }
+</div>

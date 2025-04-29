@@ -1,1 +1,43 @@
-<p>client-magnament works!</p>
+<!-- sidebar.component.html -->
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav  #drawer [mode]=drawerMode [opened]="drawerOpened" class="sidenav">
+        <app-side-nav></app-side-nav>
+    </mat-sidenav>
+  
+    <mat-sidenav-content>
+
+      @if (isSmallScreen) {
+      
+        <button mat-icon-button (click)="drawer.toggle()" class="Menu-button">
+            <mat-icon>menu</mat-icon>
+        </button>
+      }
+
+        <div class="toolbar-container">
+            <div class="left-buttons">
+              <button mat-flat-button color="primary" (click)="openCreateClientDialog()">
+                <mat-icon>add</mat-icon> New
+              </button>
+          
+              <button mat-flat-button color="primary" (click)="GetDataToExport()">
+                <mat-icon>upload</mat-icon> Export
+              </button>
+          
+            </div>
+            
+            <mat-form-field appearance="outline" class="search-field">
+              <mat-label>Enter shared key </mat-label>
+              <input matInput /> 
+              <button mat-button matSuffix color="primary">|Search</button>
+            </mat-form-field>
+            
+            <button mat-flat-button color="primary">Advanced Search</button>
+
+            <div class="tableClient">
+              <app-client-data-table></app-client-data-table>
+            </div>            
+          </div>
+        
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  

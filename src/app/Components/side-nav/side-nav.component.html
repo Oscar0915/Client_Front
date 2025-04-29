@@ -1,1 +1,26 @@
-<p>side-nav works!</p>
+<section>
+
+    <div class="logo-section">
+        <img src="http://cdn.modyo.cloud/uploads/9e0fec6a-61c6-4e89-8486-0e95cbc46c43/original/alianza-logo.webp" alt="Logo Alianza" title="Logo Alianza">
+    </div>
+
+    <mat-nav-list>
+        <a mat-list-item routerLink="/clients" routerLink="/client-magnament" [routerLinkActive]="['active']">
+            <mat-icon>person_outline</mat-icon>
+            <span>Clients</span>
+        </a>
+
+        <a mat-list-item routerLink="/client-look-history">
+            <span class="Option-secondary">Client look history</span>
+        </a>
+
+        <a mat-list-item routerLink="/emergency-pin">
+            <span class="Option-secondary">Emergency PIN configuration</span>
+        </a>
+
+        <a mat-list-item routerLink="/emergency-pin-history">
+            <span class="Option-secondary">Emergency PIN history</span>
+        </a>
+    </mat-nav-list>
+
+</section>

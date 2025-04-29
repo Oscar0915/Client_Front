@@ -1,0 +1,101 @@
+mat-sidenav-container{
+    background-color: #dbd5d5;
+    height: 100vh;
+
+}
+
+.sidenav-container {
+    height: 100vh;
+  }
+
+.sidenav {
+    width: 310px;
+    background-color: #dbd5d5;
+    padding-top: 10px;
+  }
+
+/*estilos del contenido de opciones*/
+
+.toolbar-container {
+  display: inline-block;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 8px;
+  margin-top: 50px;
+}
+
+.left-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 50px;
+}
+
+
+.search-section {
+  display: block;
+  align-items: center;
+  gap: 12px;
+}
+
+button {
+  margin-left: 10px;
+}
+
+.search-field {
+  width: 250px;
+
+  ::ng-deep .mat-form-field-suffix {
+    margin-right: 4px;
+  }
+
+  ::ng-deep .mat-button {
+    min-width: 0;
+    padding: 0 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  
+  .tableClient{
+    max-width: 400px;
+  }
+  
+
+
+  .toolbar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinea a la izquierda para no desordenar */
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .left-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .search-section {
+    width: 100%; /* Que el input de búsqueda ocupe todo */
+  }
+
+  .search-field {
+    width: 100%; /* El input ocupa todo el ancho en pantallas pequeñas */
+  }
+
+  button {
+    margin-left: 0;
+    margin-top: 8px;
+  }
+}
+
+.Menu-button{
+  border-radius: 8px;
+  border: none;
+  size: 80px;
+  margin: 8px !important;
+  color: rgb(15, 0, 0);
+}

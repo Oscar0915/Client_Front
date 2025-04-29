@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SideNavComponent } from "./Components/side-nav/side-nav.component";
+import { ClientMagnamentComponent } from "./Pages/client-magnament/client-magnament.component";
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -9,5 +11,4 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'Alianza-Frontend';
 }

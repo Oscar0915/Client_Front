@@ -1,0 +1,17 @@
+.full-width {
+    width: 100%;
+  }
+  
+  mat-dialog-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  hr {
+    border: none;               
+    height: 1px;                
+    background-color: #000;    
+    margin: 16px 0;             
+  }
+  
