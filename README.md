@@ -1,27 +1,96 @@
 # AlianzaFrontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.8.
+**AlianzaFrontend** es una aplicación web desarrollada en Angular que permite la **consulta y gestión de clientes**. Está conectada a un backend desarrollado en **Spring**, y se comunica mediante servicios configurados en los archivos `environment`.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🧩 Estructura del Proyecto
 
-## Code scaffolding
+- **Componentes y Páginas**: La aplicación está organizada en componentes reutilizables y páginas que encapsulan vistas completas.
+- **Core**: Contiene los servicios, modelos y lógica compartida.
+- **Estilos**: Cada componente gestiona sus propios estilos de forma aislada usando SCSS implementando Angular Material.
+- **Responsive**: La aplicación está optimizada para múltiples tamaños de pantalla (desktop, tablet y móvil).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+## 🚀 Inicio Rápido
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### 🔧 Requisitos
 
-## Running unit tests
+- Node.js version 22.8.0 (se encuentra definida en el archivo .nvmrc)
+- Angular CLI (`npm install -g @angular/cli`)
+- Backend en Spring configurado y corriendo.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### 🔁 Clonar el repositorio
 
-## Running end-to-end tests
+```bash
+git clone https://UrlRepositorioEnGIt/alianza-frontend.git
+cd alianza-frontend
+npm install
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+---
 
-## Further help
+## 🌐 Servidor de Desarrollo
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Ejecuta el servidor de desarrollo con:
+
+```bash
+ng serve
+```
+
+Navega a `http://localhost:4200/`. La app se recargará automáticamente si editas los archivos fuente.
+
+---
+
+## 🏗️ Build
+
+Para generar la versión de producción:
+
+```bash
+ng build
+```
+
+Los archivos generados se encontrarán en el directorio `dist/`.
+
+---
+
+## ✅ Pruebas Unitarias
+
+```bash
+ng test
+```
+
+Ejecuta las pruebas unitarias con [Karma](https://karma-runner.github.io).
+
+---
+
+## 🔍 Pruebas End-to-End
+
+```bash
+ng e2e
+```
+
+Para esto debes instalar una plataforma de testing compatible (como Cypress o Protractor).
+
+---
+
+## ⚙️ Configuración de Entorno
+
+La conexión al backend Spring está definida en el archivo:
+
+```
+src/environments/environment.ts
+```
+
+Modifica la URL base según el entorno (`dev`, `prod`, etc.).
+
+---
+
+## 📚 Más Ayuda
+
+Consulta la [documentación oficial de Angular CLI](https://angular.dev/tools/cli) o ejecuta:
+
+```bash
+ng help
+```
