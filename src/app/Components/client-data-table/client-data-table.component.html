@@ -36,13 +36,13 @@
         <!-- Email -->
         <ng-container matColumnDef="email">
             <th mat-header-cell *matHeaderCellDef> E-mail </th>
-            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.phoneNumber}} </td>
         </ng-container>
 
         <!-- Phone -->
         <ng-container matColumnDef="phone">
             <th mat-header-cell *matHeaderCellDef> Phone </th>
-            <td mat-cell *matCellDef="let element"> {{element.phoneNumber}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
         </ng-container>
 
         <!-- Date Added -->
@@ -67,6 +67,10 @@
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
     </table>
+    <mat-paginator [pageSizeOptions]="[2, 5, 10, 20, 50]" [length]="fullClientData.length"  [pageSize]="50" (page)="onPageChange($event)">
+        showFirstLastButtons></mat-paginator>
+
     }
 </div>
